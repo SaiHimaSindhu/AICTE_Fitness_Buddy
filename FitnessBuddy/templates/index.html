@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Fitness Buddy — Your AI Fitness Coach{% endblock %}
+{% block content %}
+<section class="fb-hero">
+    <div class="container text-center py-5">
+        <h1 class="display-5 fw-bold mb-3">Meet Your AI Fitness Buddy</h1>
+        <p class="lead mb-4">
+            Personalized workouts, smart nutrition guidance, daily motivation, and
+            progress tracking — powered by IBM Granite on watsonx.ai.
+        </p>
+        {% if session.get('user_id') %}
+            <a href="{{ url_for('dashboard_page') }}" class="btn fb-btn-primary btn-lg px-4">Go to Dashboard</a>
+        {% else %}
+            <a href="{{ url_for('register_page') }}" class="btn fb-btn-primary btn-lg px-4">Create Your Profile</a>
+        {% endif %}
+    </div>
+</section>
+
+<section class="container my-5">
+    <div class="row g-4">
+        <div class="col-md-3 col-6">
+            <div class="fb-card text-center h-100">
+                <i class="bi bi-lightning-charge fb-icon"></i>
+                <h5 class="mt-3">AI Workout Plans</h5>
+                <p class="small text-muted">Personalized routines for weight loss, muscle gain, or general fitness.</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="fb-card text-center h-100">
+                <i class="bi bi-egg-fried fb-icon"></i>
+                <h5 class="mt-3">Nutrition Assistant</h5>
+                <p class="small text-muted">Meal ideas and daily calorie guidance tailored to your goal.</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="fb-card text-center h-100">
+                <i class="bi bi-graph-up-arrow fb-icon"></i>
+                <h5 class="mt-3">Progress Tracking</h5>
+                <p class="small text-muted">Log weight, water and workouts, and see your weekly trends.</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="fb-card text-center h-100">
+                <i class="bi bi-chat-dots fb-icon"></i>
+                <h5 class="mt-3">AI Chat Coach</h5>
+                <p class="small text-muted">Ask fitness, diet, or motivation questions anytime.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

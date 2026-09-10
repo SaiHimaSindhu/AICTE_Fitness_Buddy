@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}AI Chat Assistant — Fitness Buddy{% endblock %}
+{% block content %}
+<section class="container my-4">
+    <h2 class="mb-1"><i class="bi bi-chat-dots"></i> AI Chat Assistant</h2>
+    <p class="text-muted mb-4">Ask about workouts, diet, fitness, or motivation — powered by IBM Granite.</p>
+
+    <div class="fb-card p-0">
+        <div class="fb-chat-window" id="chatWindow">
+            {% if not history %}
+            <div class="fb-chat-bubble fb-chat-bot">
+                Hi {{ user.name.split(' ')[0] }}! I'm your Fitness Buddy AI coach. Ask me anything about
+                workouts, nutrition, or staying motivated. 💪
+            </div>
+            {% endif %}
+            {% for h in history %}
+            <div class="fb-chat-bubble fb-chat-user">{{ h.question }}</div>
+            <div class="fb-chat-bubble fb-chat-bot">{{ h.response }}</div>
+            {% endfor %}
+        </div>
+        <div class="fb-chat-input-row">
+            <input type="text" class="form-control" id="chatInput" placeholder="Ask your fitness question...">
+            <button class="btn fb-btn-primary" id="chatSendBtn"><i class="bi bi-send"></i></button>
+        </div>
+    </div>
+
+    <div class="mt-3 d-flex flex-wrap gap-2">
+        <button class="btn btn-sm fb-btn-outline fb-suggestion">How do I lose belly fat?</button>
+        <button class="btn btn-sm fb-btn-outline fb-suggestion">What should I eat before a workout?</button>
+        <button class="btn btn-sm fb-btn-outline fb-suggestion">I'm losing motivation, help!</button>
+    </div>
+</section>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}

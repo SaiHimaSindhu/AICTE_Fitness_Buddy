@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Create Profile — Fitness Buddy{% endblock %}
+{% block content %}
+<section class="container my-5" style="max-width: 640px;">
+    <div class="fb-card">
+        <h2 class="mb-1">Create Your Profile</h2>
+        <p class="text-muted mb-4">Tell us about yourself so your AI coach can personalize everything.</p>
+
+        <div id="registerAlert" class="alert alert-danger d-none"></div>
+
+        <form id="registerForm">
+            <div class="row g-3">
+                <div class="col-12">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" name="name" required placeholder="e.g. Priya Sharma">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Age</label>
+                    <input type="number" class="form-control" name="age" min="10" max="100" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Gender</label>
+                    <select class="form-select" name="gender" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Height (cm)</label>
+                    <input type="number" step="0.1" class="form-control" name="height" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Weight (kg)</label>
+                    <input type="number" step="0.1" class="form-control" name="weight" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Fitness Goal</label>
+                    <select class="form-select" name="goal" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="weight_loss">Weight Loss</option>
+                        <option value="muscle_gain">Muscle Gain</option>
+                        <option value="maintenance">Maintenance</option>
+                        <option value="endurance">Endurance</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Activity Level</label>
+                    <select class="form-select" name="activity_level" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="sedentary">Sedentary (little/no exercise)</option>
+                        <option value="light">Light (1-3 days/week)</option>
+                        <option value="moderate">Moderate (3-5 days/week)</option>
+                        <option value="active">Active (6-7 days/week)</option>
+                        <option value="very_active">Very Active (physical job/2x day)</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn fb-btn-primary w-100 mt-4" id="registerBtn">
+                Create Profile &amp; Start
+            </button>
+        </form>
+    </div>
+</section>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+{% endblock %}

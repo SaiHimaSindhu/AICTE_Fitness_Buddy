@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Workout Planner — Fitness Buddy{% endblock %}
+{% block content %}
+<section class="container my-4">
+    <h2 class="mb-1"><i class="bi bi-lightning-charge"></i> Workout Planner</h2>
+    <p class="text-muted mb-4">AI-generated plans tailored to your goal: <strong class="text-capitalize">{{ user.goal.replace('_',' ') }}</strong></p>
+
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <button class="btn fb-btn-primary w-100" id="btnFullPlan">
+                <i class="bi bi-calendar-week"></i> Generate 7-Day Plan
+            </button>
+        </div>
+        <div class="col-md-4">
+            <button class="btn fb-btn-outline w-100" id="btnHomeWorkout">
+                <i class="bi bi-house-heart"></i> Quick Home Workout
+            </button>
+        </div>
+        <div class="col-md-4">
+            <button class="btn fb-btn-outline w-100" id="btnTip">
+                <i class="bi bi-lightbulb"></i> Get a Fitness Tip
+            </button>
+        </div>
+    </div>
+
+    <div id="workoutLoading" class="text-center my-4 d-none">
+        <div class="spinner-border fb-spinner" role="status"></div>
+        <p class="text-muted mt-2">Your AI coach is building your plan...</p>
+    </div>
+
+    <div class="fb-card d-none" id="workoutResultCard">
+        <h5 id="workoutResultTitle">Your Plan</h5>
+        <pre class="fb-ai-output" id="workoutResultText"></pre>
+    </div>
+</section>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/workout.js') }}"></script>
+{% endblock %}
